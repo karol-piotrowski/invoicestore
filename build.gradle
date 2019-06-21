@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.0.M4'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
     id 'java'
 }
 
@@ -17,35 +17,15 @@ configurations {
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/snapshot' }
-    maven { url 'https://repo.spring.io/milestone' }
-}
-
-ext {
-    set('vaadinVersion', "13.0.8")
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'com.vaadin:vaadin-spring-boot-starter'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        exclude group: 'junit', module: 'junit'
-    }
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
-    }
-}
-
-test {
-    useJUnitPlatform()
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
