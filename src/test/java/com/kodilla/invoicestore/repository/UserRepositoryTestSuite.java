@@ -1,5 +1,7 @@
 package com.kodilla.invoicestore.repository;
 
+import com.kodilla.invoicestore.domain.EmailConfig;
+import com.kodilla.invoicestore.domain.EncryptionType;
 import com.kodilla.invoicestore.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,6 +23,9 @@ public class UserRepositoryTestSuite {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    EmailConfigRepository emailConfigRepository;
+
     private Logger LOGGER = LoggerFactory.getLogger(UserRepositoryTestSuite.class);
 
 
@@ -28,7 +33,6 @@ public class UserRepositoryTestSuite {
     public void testSaveOne() {
         //Given
         LOGGER.info("TEST: " + Thread.currentThread().getStackTrace()[1].getMethodName());
-
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
@@ -78,10 +82,6 @@ public class UserRepositoryTestSuite {
         userRepository.save(janeDoe);
         userRepository.save(clarkKent);
         long userCount = userRepository.count();
-
-        long johnSmithId = johnSmith.getUserId();
-        long janeDoeId = janeDoe.getUserId();
-        long clarkKentId = clarkKent.getUserId();
 
         //Then
         Assert.assertEquals(3, userCount);
@@ -165,9 +165,7 @@ public class UserRepositoryTestSuite {
         userRepository.save(janeDoe);
         userRepository.save(clarkKent);
 
-        long johnSmithId = johnSmith.getUserId();
         long janeDoeId = janeDoe.getUserId();
-        long clarkKentId = clarkKent.getUserId();
 
         userRepository.deleteById(janeDoeId);
         List<User> users = userRepository.findAll();
@@ -235,6 +233,50 @@ public class UserRepositoryTestSuite {
             userRepository.delete(janeDoe);
             userRepository.delete(clarkKent);
 
+            LOGGER.info("Cleanup successful");
+        } catch (Exception e) {
+            LOGGER.error("Error during cleanup");
+        }
+    }
+
+    @Test
+    public void testSaveUserWithEmailConfig() {
+        //Given
+        LOGGER.info("TEST: " + Thread.currentThread().getStackTrace()[1].getMethodName());
+
+        EmailConfig emailConfig1 = new EmailConfig();
+        emailConfig1.setEmailAddress("john.smith@domain1.com");
+        emailConfig1.setSmtpServer("smtp.domain1.com");
+        emailConfig1.setSmtpPort(487);
+        emailConfig1.setUsername("john.smith@domain1.com");
+        emailConfig1.setPassword("p@55w0rd");
+        emailConfig1.setAuthReq(true);
+        emailConfig1.setEncryptionType(EncryptionType.SSL);
+        emailConfigRepository.save(emailConfig1);
+
+
+        User johnSmith = new User();
+        johnSmith.setLogin("jsmith");
+        johnSmith.setTaxId(6781230987l);
+        johnSmith.setFirstname("John");
+        johnSmith.setLastname("Smith");
+        johnSmith.setEmailConfig(emailConfig1);
+
+        emailConfig1.setUser(johnSmith);
+
+        //When
+        userRepository.save(johnSmith);
+        emailConfigRepository.save(emailConfig1);
+        long johnSmithId = johnSmith.getUserId();
+
+        //Then
+        Assert.assertEquals(1, userRepository.count());
+        Assert.assertEquals("john.smith@domain1.com", userRepository.findById(johnSmithId).get().getEmailConfig().getEmailAddress());
+
+        //Cleanup
+        try {
+            emailConfigRepository.delete(emailConfig1);
+            userRepository.delete(johnSmith);
             LOGGER.info("Cleanup successful");
         } catch (Exception e) {
             LOGGER.error("Error during cleanup");
