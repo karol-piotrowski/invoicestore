@@ -19,5 +19,6 @@ public class EmailConfigDto {
     private String password;
     private boolean isAuthReq;
     private EncryptionType encryptionType;
+    private Long userId;
 
 }

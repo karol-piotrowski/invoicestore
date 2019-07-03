@@ -15,5 +15,6 @@ public class UserDto {
     private Long taxId;
     private String firstname;
     private String lastname;
+    private Long emailConfigId;
 
 }
