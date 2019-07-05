@@ -1,14 +1,13 @@
 package com.kodilla.invoicestore.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
 @Entity(name = "email_configs")
@@ -16,6 +15,7 @@ public class EmailConfig {
     @Id
     @GeneratedValue
     @Column(name = "email_config_id")
+    @NotNull
     private Long emailConfigId;
 
     @Column(name = "email_address")
@@ -40,7 +40,9 @@ public class EmailConfig {
     @Enumerated(EnumType.ORDINAL)
     private EncryptionType encryptionType;
 
-    @OneToOne
+    @OneToOne(targetEntity = User.class,
+            mappedBy = "emailConfig",
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

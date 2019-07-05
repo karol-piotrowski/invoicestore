@@ -1,14 +1,13 @@
 package com.kodilla.invoicestore.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
 @Entity(name = "users")
@@ -16,13 +15,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
+    @NotNull
     private Long userId;
 
     @Column(name = "login")
     private String login;
 
     @Column(name = "taxid")
-    private Long taxId;
+    private String taxId;
 
     @Column(name = "firstname")
     private String firstname;
@@ -30,8 +30,7 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @OneToOne(targetEntity = EmailConfig.class,
-    mappedBy = "user",
-    fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "email_config_id")
     private EmailConfig emailConfig;
 }

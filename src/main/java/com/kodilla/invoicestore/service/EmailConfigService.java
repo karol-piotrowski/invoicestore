@@ -19,7 +19,7 @@ public class EmailConfigService {
     }
 
     public Optional<EmailConfig> getEmailConfig(Long id) {
-        return emailConfigRepository.findById(id);
+            return emailConfigRepository.findById(id);
     }
 
     public EmailConfig saveEmailConfig(EmailConfig emailConfig) {

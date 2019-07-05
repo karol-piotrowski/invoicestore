@@ -2,13 +2,13 @@ package com.kodilla.invoicestore.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kodilla.invoicestore.domain.EncryptionType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
+@Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EmailConfigDto {
     private Long emailConfigId;
