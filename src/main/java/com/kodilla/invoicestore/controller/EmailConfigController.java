@@ -21,27 +21,27 @@ public class EmailConfigController {
     private EmailConfigMapper emailConfigMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
-    public List<EmailConfigDto> getUsers() {
+    public List<EmailConfigDto> getEmailConfigs() {
         return emailConfigMapper.mapEmailConfigsToEmailConfigDtos(emailConfigService.getEmailConfigs());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{emailConfigId}")
-    public EmailConfigDto getUser(@PathVariable Long emailConfigId) {
+    public EmailConfigDto getEmailConfig(@PathVariable Long emailConfigId) {
         return emailConfigMapper.mapEmailConfigToEmailConfigDto(emailConfigService.getEmailConfig(emailConfigId).get());
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{emailConfigId}")
-    public void deleteUser(@PathVariable Long emailConfigId) {
+    public void deleteEmailConfig(@PathVariable Long emailConfigId) {
         emailConfigService.deleteEmailConfig(emailConfigId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/")
-    public EmailConfigDto updateUser(@RequestBody EmailConfigDto emailConfigDto) {
+    public EmailConfigDto updateEmailConfig(@RequestBody EmailConfigDto emailConfigDto) {
         return emailConfigMapper.mapEmailConfigToEmailConfigDto(emailConfigService.saveEmailConfig(emailConfigMapper.mapEmailConfigDtoToEmailConfig(emailConfigDto)));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/", consumes = APPLICATION_JSON_VALUE)
-    public void createUser(@RequestBody EmailConfigDto emailConfigDto) {
+    public void createEmailConfig(@RequestBody EmailConfigDto emailConfigDto) {
         emailConfigService.saveEmailConfig(emailConfigMapper.mapEmailConfigDtoToEmailConfig(emailConfigDto));
     }
 }
