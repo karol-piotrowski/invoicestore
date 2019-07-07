@@ -40,9 +40,7 @@ public class EmailConfig {
     @Enumerated(EnumType.ORDINAL)
     private EncryptionType encryptionType;
 
-    @OneToOne(targetEntity = User.class,
-            mappedBy = "emailConfig",
-            fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 

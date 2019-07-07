@@ -30,7 +30,9 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @OneToOne
+    @OneToOne(targetEntity = EmailConfig.class,
+            mappedBy = "user",
+            fetch = FetchType.LAZY)
     @JoinColumn(name = "email_config_id")
     private EmailConfig emailConfig;
 }
