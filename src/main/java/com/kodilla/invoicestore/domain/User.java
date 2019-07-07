@@ -4,13 +4,16 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
-@Entity(name = "users")
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,4 +38,9 @@ public class User {
             fetch = FetchType.LAZY)
     @JoinColumn(name = "email_config_id")
     private EmailConfig emailConfig;
+
+    @OneToMany(targetEntity = Invoice.class,
+            mappedBy = "user",
+            fetch = FetchType.LAZY)
+    private List<Invoice> invoices = new ArrayList<>();
 }

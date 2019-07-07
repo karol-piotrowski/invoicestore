@@ -10,7 +10,8 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Getter
 @Setter
-@Entity(name = "email_configs")
+@Entity
+@Table(name = "email_configs")
 public class EmailConfig {
     @Id
     @GeneratedValue

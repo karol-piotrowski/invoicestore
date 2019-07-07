@@ -12,13 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
-    private Long userId;
-    private String login;
+public class CompanyDto {
+    private Long companyId;
     private String taxId;
-    private String firstname;
-    private String lastname;
-    private Long emailConfigId;
+    private String companyName;
     private List<Long> invoiceIdList = new ArrayList<>();
 
 }
