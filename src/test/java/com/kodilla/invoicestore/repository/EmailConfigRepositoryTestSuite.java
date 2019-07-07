@@ -299,7 +299,7 @@ public class EmailConfigRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
         johnSmith.setEmailConfig(emailConfig1);

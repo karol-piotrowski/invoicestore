@@ -36,7 +36,7 @@ public class UserRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
         //When
@@ -62,19 +62,19 @@ public class UserRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
 
         User janeDoe = new User();
         janeDoe.setLogin("jdoe");
-        janeDoe.setTaxId(1236547809l);
+        janeDoe.setTaxId("1236547809l");
         janeDoe.setFirstname("Jane");
         janeDoe.setLastname("Doe");
 
         User clarkKent = new User();
         clarkKent.setLogin("ckent");
-        clarkKent.setTaxId(1234567890l);
+        clarkKent.setTaxId("1234567890l");
         clarkKent.setFirstname("Clark");
         clarkKent.setLastname("Kent");
         //When
@@ -105,19 +105,19 @@ public class UserRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
 
         User janeDoe = new User();
         janeDoe.setLogin("jdoe");
-        janeDoe.setTaxId(1236547809l);
+        janeDoe.setTaxId("1236547809l");
         janeDoe.setFirstname("Jane");
         janeDoe.setLastname("Doe");
 
         User clarkKent = new User();
         clarkKent.setLogin("ckent");
-        clarkKent.setTaxId(1234567890l);
+        clarkKent.setTaxId("1234567890l");
         clarkKent.setFirstname("Clark");
         clarkKent.setLastname("Kent");
         //When
@@ -145,19 +145,19 @@ public class UserRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
 
         User janeDoe = new User();
         janeDoe.setLogin("jdoe");
-        janeDoe.setTaxId(1236547809l);
+        janeDoe.setTaxId("1236547809l");
         janeDoe.setFirstname("Jane");
         janeDoe.setLastname("Doe");
 
         User clarkKent = new User();
         clarkKent.setLogin("ckent");
-        clarkKent.setTaxId(1234567890l);
+        clarkKent.setTaxId("1234567890l");
         clarkKent.setFirstname("Clark");
         clarkKent.setLastname("Kent");
         //When
@@ -194,19 +194,19 @@ public class UserRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
 
         User janeDoe = new User();
         janeDoe.setLogin("jdoe");
-        janeDoe.setTaxId(1236547809l);
+        janeDoe.setTaxId("1236547809l");
         janeDoe.setFirstname("Jane");
         janeDoe.setLastname("Doe");
 
         User clarkKent = new User();
         clarkKent.setLogin("ckent");
-        clarkKent.setTaxId(1234567890l);
+        clarkKent.setTaxId("1234567890l");
         clarkKent.setFirstname("Clark");
         clarkKent.setLastname("Kent");
         //When
@@ -257,7 +257,7 @@ public class UserRepositoryTestSuite {
 
         User johnSmith = new User();
         johnSmith.setLogin("jsmith");
-        johnSmith.setTaxId(6781230987l);
+        johnSmith.setTaxId("6781230987l");
         johnSmith.setFirstname("John");
         johnSmith.setLastname("Smith");
         johnSmith.setEmailConfig(emailConfig1);
