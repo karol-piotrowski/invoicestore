@@ -17,12 +17,13 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "company_id")
+    @NotNull
     private Long companyId;
 
     @Column(name = "taxid")
     private String taxId;
 
-    @Column(name = "Company name")
+    @Column(name = "company_name")
     private String companyName;
 
     @OneToMany(targetEntity = Invoice.class,
