@@ -1,6 +1,6 @@
 package com.kodilla.invoicestore.repository;
 
-import com.kodilla.invoicestore.domain.User;
+import com.kodilla.invoicestore.domain.Company;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,18 +8,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+
 @Transactional
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface CompanyRepository extends CrudRepository<Company, Long> {
     @Override
-    List<User> findAll();
+    List<Company> findAll();
 
     @Override
-    User save(User user);
+    Company save(Company company);
 
     @Override
-    void deleteById(Long userId);
+    Optional<Company> findById(Long companyId);
 
     @Override
-    Optional<User> findById(Long userId);
+    void deleteById(Long companyId);
+
 }
