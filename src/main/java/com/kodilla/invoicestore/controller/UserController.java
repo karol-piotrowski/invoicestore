@@ -44,6 +44,4 @@ public class UserController {
     public void createUser(@RequestBody UserDto userDto) {
         userService.saveUser(userMapper.mapUserDtoToUser(userDto));
     }
-
-
 }
