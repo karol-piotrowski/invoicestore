@@ -6,6 +6,7 @@ import com.kodilla.invoicestore.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -43,5 +44,15 @@ public class InvoiceController {
     @RequestMapping(method = RequestMethod.POST, value = "/", consumes = APPLICATION_JSON_VALUE)
     public void createInvoice(@RequestBody InvoiceDto invoiceDto) {
         invoiceService.saveInvoice(invoiceMapper.mapInvoiceDtoToInvoice(invoiceDto));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{userId}")
+    public List<InvoiceDto> getInvoicesByUserId(@PathVariable Long userId) {
+        return invoiceMapper.mapInvoicesListToInvoiceDtosList(invoiceService.getInvoicesForUserId(userId));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{userId}/{startYear}/{startMonth}/{startDay}/{endYear}/{endMonth}/{endDay}")
+    public List<InvoiceDto>  getInvoicesByUserIdAndIssuedPeriod(@PathVariable Long userId, @PathVariable int startYear, @PathVariable int startMonth, @PathVariable int startDay, @PathVariable int endYear, @PathVariable int endMonth, @PathVariable int endDay) {
+        return invoiceMapper.mapInvoicesListToInvoiceDtosList(invoiceService.getInvoicesByUserIdAndIssuedDateBetween(userId, LocalDate.of(startYear, startMonth, startDay), LocalDate.of(endYear, endMonth, endDay)));
     }
 }
