@@ -52,7 +52,7 @@ public class InvoiceController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/user/{userId}/{startYear}/{startMonth}/{startDay}/{endYear}/{endMonth}/{endDay}")
-    public List<InvoiceDto>  getInvoicesByUserIdAndIssuedPeriod(@PathVariable Long userId, @PathVariable int startYear, @PathVariable int startMonth, @PathVariable int startDay, @PathVariable int endYear, @PathVariable int endMonth, @PathVariable int endDay) {
+    public List<InvoiceDto> getInvoicesByUserIdAndIssuedPeriod(@PathVariable Long userId, @PathVariable int startYear, @PathVariable int startMonth, @PathVariable int startDay, @PathVariable int endYear, @PathVariable int endMonth, @PathVariable int endDay) {
         return invoiceMapper.mapInvoicesListToInvoiceDtosList(invoiceService.getInvoicesByUserIdAndIssuedDateBetween(userId, LocalDate.of(startYear, startMonth, startDay), LocalDate.of(endYear, endMonth, endDay)));
     }
 }
