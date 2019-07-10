@@ -17,8 +17,6 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @Transactional
 @SpringBootTest
